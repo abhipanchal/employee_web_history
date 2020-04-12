@@ -2,6 +2,10 @@
 
 namespace App\Console;
 
+use App\Console\Commands\EmployeeWebHistoryCommand;
+use App\Console\Commands\GETempdata;
+use App\Console\Commands\SETempdata;
+use App\Console\Commands\UNSETempdata;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +17,11 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        EmployeeWebHistoryCommand::class,
+        SETempdata::class,
+        GETempdata::class,
+        UNSETempdata::class,
+
     ];
 
     /**

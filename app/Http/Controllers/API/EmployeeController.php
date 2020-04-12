@@ -43,10 +43,10 @@ class EmployeeController extends BaseController {
     }
     public function destroyEmployee($ip_address){
         $employee=$this->employeeRepository->deleteByIP($ip_address);
-        if ($employee==1){
-            $msg='Employee deleted successfully.';
-        }elseif ($employee==0){
+        if ($employee==0){
             $msg='Employee not found';
+        }else{
+            $msg='Employee deleted successfully.';
         }
         return $this->sendResponse(null, $msg);
     }
