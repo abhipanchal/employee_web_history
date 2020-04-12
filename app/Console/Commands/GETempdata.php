@@ -31,7 +31,7 @@ class GETempdata extends Command
 
     public function __construct(EmployeeRepository $employeeRepository)
     {
-        $this->employeeRepository=$employeeRepository;
+        $this->employeeRepository = $employeeRepository;
 
         parent::__construct();
     }
@@ -43,20 +43,20 @@ class GETempdata extends Command
      */
     public function handle()
     {
-        $employee=$this->employeeRepository->getByIP($this->argument('ip_address'));
+        $employee = $this->employeeRepository->getByIP($this->argument('ip_address'));
         if (is_null($employee)) {
             $response = [
                 'success' => false,
                 'message' => 'Employee not found.',
             ];
-            $this->info(response()->json($response, 404));
+            $this->info(response()->json($response));
+        } else {
+            $response = [
+                'success' => true,
+                'data' => $employee,
+                'message' => 'Employee retrieved successfully.',
+            ];
+            $this->info(response()->json($response));
         }
-        $response = [
-            'success' => true,
-            'data'    => $employee,
-            'message' => 'Employee retrieved successfully.',
-        ];
-        $this->info(response()->json($response, 200));
-
     }
 }

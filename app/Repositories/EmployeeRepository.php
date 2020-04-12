@@ -21,7 +21,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
         return $employee;
     }
     public function getByIP($ip_address){
-        $employee = Employee::where('ip_address',$ip_address)->where('deleted_at',null)->get();
+        $employee = Employee::where('ip_address',$ip_address)->where('deleted_at',null)->first();
         return $employee;
     }
     public function deleteByIP($ip_address){

@@ -30,7 +30,7 @@ class UNSETempdata extends Command
 
     public function __construct(EmployeeRepository $employeeRepository)
     {
-        $this->employeeRepository=$employeeRepository;
+        $this->employeeRepository = $employeeRepository;
 
         parent::__construct();
     }
@@ -42,18 +42,21 @@ class UNSETempdata extends Command
      */
     public function handle()
     {
-        $employee=$this->employeeRepository->deleteByIP($this->argument('ip_address'));
-        if ($employee==0){
-            $msg='Employee not found';
-        }else{
-            $msg='Employee deleted successfully.';
+        $employee = $this->employeeRepository->deleteByIP($this->argument('ip_address'));
+        if ($employee == 0) {
+            $response = [
+                'success' => false,
+                'data' => null,
+                'message' => 'Employee not found'
+            ];
+        } else {
+            $response = [
+                'success' => true,
+                'data' => null,
+                'message' => 'Employee deleted successfully.'
+            ];
         }
-        $response = [
-            'success' => true,
-            'data'    => null,
-            'message' => $msg,
-        ];
-        $this->info(response()->json($response, 200));
+        $this->info(response()->json($response));
 
     }
 }

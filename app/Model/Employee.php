@@ -11,7 +11,7 @@ class Employee extends Model
     protected $table = 'employees';
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['emp_id','epm_name','ip_address'];
+    protected $fillable = ['emp_id','emp_name','ip_address'];
 
 
 

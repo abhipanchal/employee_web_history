@@ -17,7 +17,6 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        EmployeeWebHistoryCommand::class,
         SETempdata::class,
         GETempdata::class,
         UNSETempdata::class,
